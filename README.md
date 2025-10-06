@@ -180,7 +180,7 @@ JOIN users u ON m.user_id = u.id;
 
 ## RDS Instance Details
 
-**Your RDS Endpoint**: `[TO BE FILLED AFTER CREATION]`
+**Your RDS Endpoint**: `database-2.cluster-ccr8se2ccd1w.us-east-1.rds.amazonaws.com`
 **Database Name**: `meme_gallery`
 **Username**: `postgres`
 **Port**: `5432`
