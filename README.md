@@ -29,7 +29,7 @@ aws-rds-meme-gallery/
    - **Engine Version**: Use latest (PostgreSQL 15 or newer)
    - **Templates**: Free tier (if available)
    - **DB Instance Identifier**: `meme-gallery-db`
-   - **Master Username**: `admin`
+   - **Master Username**: `postgres`
    - **Master Password**: Choose a secure password (save this!)
 
 4. **Instance Configuration**
@@ -70,7 +70,7 @@ aws-rds-meme-gallery/
 After your RDS instance is ready:
 - **Endpoint**: Copy the endpoint URL (e.g., `meme-gallery-db.abc123.us-west-2.rds.amazonaws.com`)
 - **Port**: 5432
-- **Username**: admin
+- **Username**: postgres
 - **Password**: (the one you set)
 
 ## Local Setup and Connection
@@ -84,12 +84,12 @@ After your RDS instance is ready:
 
 ```bash
 # Replace <your-endpoint> with your actual RDS endpoint
-psql -h <your-endpoint> -U admin -d postgres -p 5432
+psql -h <your-endpoint> -U postgres -d postgres -p 5432
 ```
 
 Example:
 ```bash
-psql -h meme-gallery-db.abc123.us-west-2.rds.amazonaws.com -U admin -d postgres -p 5432
+psql -h meme-gallery-db.abc123.us-west-2.rds.amazonaws.com -U postgres -d postgres -p 5432
 ```
 
 ### Setup Database Schema
@@ -103,12 +103,12 @@ CREATE DATABASE meme_gallery;
 2. **Run the schema creation**:
 ```bash
 # From your local machine
-psql -h <your-endpoint> -U admin -d meme_gallery -p 5432 -f schema.sql
+psql -h <your-endpoint> -U postgres -d meme_gallery -p 5432 -f schema.sql
 ```
 
 3. **Run CRUD operations**:
 ```bash
-psql -h <your-endpoint> -U admin -d meme_gallery -p 5432 -f crud.sql
+psql -h <your-endpoint> -U postgres -d meme_gallery -p 5432 -f crud.sql
 ```
 
 ## Database Schema
@@ -182,7 +182,7 @@ JOIN users u ON m.user_id = u.id;
 
 **Your RDS Endpoint**: `[TO BE FILLED AFTER CREATION]`
 **Database Name**: `meme_gallery`
-**Username**: `admin`
+**Username**: `postgres`
 **Port**: `5432`
 
 ## Troubleshooting
@@ -198,13 +198,13 @@ JOIN users u ON m.user_id = u.id;
 
 ```bash
 # Test connection
-psql -h <endpoint> -U admin -d postgres -p 5432 -c "SELECT version();"
+psql -h <endpoint> -U postgres -d postgres -p 5432 -c "SELECT version();"
 
 # List databases
-psql -h <endpoint> -U admin -d postgres -p 5432 -c "\l"
+psql -h <endpoint> -U postgres -d postgres -p 5432 -c "\l"
 
 # Connect with SSL (recommended)
-psql -h <endpoint> -U admin -d postgres -p 5432 "sslmode=require"
+psql -h <endpoint> -U postgres -d postgres -p 5432 "sslmode=require"
 ```
 
 ## Assignment Deliverables Checklist
